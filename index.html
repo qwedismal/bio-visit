@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="ecstasy — digital identity. Developer & Gamer." />
+  <title>ecstasy — bio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@200;300;400;500;600;700;800&family=Major+Mono+Display&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+<body>
+  <!-- Animated Gradient Background Canvas -->
+  <canvas id="gradientBgCanvas"></canvas>
+
+  <!-- WebGL Shader Canvas (replaces particles) -->
+  <canvas id="shaderCanvas"></canvas>
+
+  <!-- Mouse Shadow Spotlight -->
+  <div class="mouse-shadow" id="mouseShadow"></div>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- Mouse Trail Canvas -->
+  <canvas id="mouseTrailCanvas"></canvas>
+
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-content">
+      <div class="loading-line"></div>
+      <div class="loading-text">_initializing</div>
+    </div>
+  </div>
+
+  <!-- Background 3D Objects Canvas (deepest layer) -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- 3D Navigation Scene Container (above background, below particles) -->
+  <div id="nav3d-container"></div>
+
+  <!-- Particle Canvas -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- Section Connector Lines -->
+  <canvas id="connectorCanvas"></canvas>
+
+  <!-- Main Content -->
+  <main class="main-content" id="mainContent">
+    <!-- Hero Section -->
+    <section class="section hero-section" data-section="hero" id="section-hero">
+      <div class="hero-content">
+        <div class="hero-subtitle">_digital_identity</div>
+        <h1 class="hero-title" id="heroTitle">
+          <span class="title-line" data-line="1">e</span>
+          <span class="title-line" data-line="2">c</span>
+          <span class="title-line" data-line="3">s</span>
+          <span class="title-line" data-line="4">t</span>
+          <span class="title-line" data-line="5">a</span>
+          <span class="title-line" data-line="6">s</span>
+          <span class="title-line" data-line="7">y</span>
+        </h1>
+        <div class="hero-description">
+          <span class="typed-text"></span><span class="cursor-blink">|</span>
+        </div>
+        <div class="hero-scroll-indicator">
+          <span class="scroll-text">scroll</span>
+          <div class="scroll-line"></div>
+        </div>
+      </div>
+      <div class="hero-mask"></div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about-section" data-section="about" id="section-about">
+      <div class="section-label">01_about</div>
+      <div class="about-grid">
+        <div class="about-text">
+          <h2 class="section-title">Developer &<br/>Gamer</h2>
+          <p class="about-paragraph">
+            Crafting digital experiences through code. I build applications, websites, 
+            and explore the intersection of technology and art. When not coding, 
+            you'll find me in competitive gaming arenas.
+          </p>
+          <div class="about-stats">
+            <div class="stat-item">
+              <span class="stat-number" data-target="5">0</span>
+              <span class="stat-label">Years Coding</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="50">0</span>
+              <span class="stat-label">Projects</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="18000">0</span>
+              <span class="stat-label">Game Hours</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-visual">
+          <div class="about-shape"></div>
+          <div class="about-lines">
+            <div class="line line-1"></div>
+            <div class="line line-2"></div>
+            <div class="line line-3"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section class="section tech-section" data-section="tech" id="section-tech">
+      <div class="section-label">02_technologies</div>
+      <h2 class="section-title">Tech Stack</h2>
+      <div class="tech-grid">
+        <div class="tech-card" data-tilt>
+          <div class="tech-icon"><i class="fa-brands fa-cuttlefish"></i><span class="tech-plus">++</span></div>
+          <span class="tech-name">C++</span>
+          <div class="tech-level"><div class="tech-level-fill" style="width:90%"></div></div>
+        </div>
+        <div class="tech-card" data-tilt>
+          <div class="tech-icon"><i class="fa-brands fa-microsoft"></i></div>
+          <span class="tech-name">C#</span>
+          <div class="tech-level"><div class="tech-level-fill" style="width:85%"></div></div>
+        </div>
+        <div class="tech-card" data-tilt>
+          <div class="tech-icon"><i class="fa-brands fa-python"></i></div>
+          <span class="tech-name">Python</span>
+          <div class="tech-level"><div class="tech-level-fill" style="width:88%"></div></div>
+        </div>
+        <div class="tech-card" data-tilt>
+          <div class="tech-icon"><i class="fa-brands fa-html5"></i></div>
+          <span class="tech-name">HTML/CSS</span>
+          <div class="tech-level"><div class="tech-level-fill" style="width:95%"></div></div>
+        </div>
+        <div class="tech-card" data-tilt>
+          <div class="tech-icon"><i class="fa-brands fa-js"></i></div>
+          <span class="tech-name">JavaScript</span>
+          <div class="tech-level"><div class="tech-level-fill" style="width:92%"></div></div>
+        </div>
+        <div class="tech-card" data-tilt>
+          <div class="tech-icon"><i class="fa-brands fa-react"></i></div>
+          <span class="tech-name">React</span>
+          <div class="tech-level"><div class="tech-level-fill" style="width:87%"></div></div>
+        </div>
+        <div class="tech-card" data-tilt>
+          <div class="tech-icon"><i class="fa-brands fa-vuejs"></i></div>
+          <span class="tech-name">Vue</span>
+          <div class="tech-level"><div class="tech-level-fill" style="width:80%"></div></div>
+        </div>
+        <div class="tech-card" data-tilt>
+          <div class="tech-icon"><i class="fa-solid fa-code"></i></div>
+          <span class="tech-name">And more</span>
+          <div class="tech-level"><div class="tech-level-fill" style="width:75%"></div></div>
+        </div>
+      </div>
+      <!-- Animated Tech Marquee -->
+      <div class="tech-marquee-wrapper">
+        <div class="tech-marquee" id="techMarquee">
+          <span><i class="fa-brands fa-cuttlefish"></i> C++</span>
+          <span class="marquee-dot">•</span>
+          <span><i class="fa-brands fa-microsoft"></i> C#</span>
+          <span class="marquee-dot">•</span>
+          <span><i class="fa-brands fa-python"></i> Python</span>
+          <span class="marquee-dot">•</span>
+          <span><i class="fa-brands fa-html5"></i> HTML/CSS</span>
+          <span class="marquee-dot">•</span>
+          <span><i class="fa-brands fa-js"></i> JavaScript</span>
+          <span class="marquee-dot">•</span>
+          <span><i class="fa-brands fa-react"></i> React</span>
+          <span class="marquee-dot">•</span>
+          <span><i class="fa-brands fa-vuejs"></i> Vue</span>
+          <span class="marquee-dot">•</span>
+          <span><i class="fa-solid fa-database"></i> SQL</span>
+          <span class="marquee-dot">•</span>
+          <span><i class="fa-brands fa-node"></i> Node.js</span>
+          <span class="marquee-dot">•</span>
+          <span><i class="fa-brands fa-git-alt"></i> Git</span>
+          <span class="marquee-dot">•</span>
+          <span><i class="fa-brands fa-docker"></i> Docker</span>
+          <span class="marquee-dot">•</span>
+          <span><i class="fa-brands fa-linux"></i> Linux</span>
+        </div>
+        <div class="tech-marquee" aria-hidden="true">
+          <span><i class="fa-brands fa-cuttlefish"></i> C++</span>
+          <span class="marquee-dot">•</span>
+          <span><i class="fa-brands fa-microsoft"></i> C#</span>
+          <span class="marquee-dot">•</span>
+          <span><i class="fa-brands fa-python"></i> Python</span>
+          <span class="marquee-dot">•</span>
+          <span><i class="fa-brands fa-html5"></i> HTML/CSS</span>
+          <span class="marquee-dot">•</span>
+          <span><i class="fa-brands fa-js"></i> JavaScript</span>
+          <span class="marquee-dot">•</span>
+          <span><i class="fa-brands fa-react"></i> React</span>
+          <span class="marquee-dot">•</span>
+          <span><i class="fa-brands fa-vuejs"></i> Vue</span>
+          <span class="marquee-dot">•</span>
+          <span><i class="fa-solid fa-database"></i> SQL</span>
+          <span class="marquee-dot">•</span>
+          <span><i class="fa-brands fa-node"></i> Node.js</span>
+          <span class="marquee-dot">•</span>
+          <span><i class="fa-brands fa-git-alt"></i> Git</span>
+          <span class="marquee-dot">•</span>
+          <span><i class="fa-brands fa-docker"></i> Docker</span>
+          <span class="marquee-dot">•</span>
+          <span><i class="fa-brands fa-linux"></i> Linux</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Games Section -->
+    <section class="section games-section" data-section="games" id="section-games">
+      <div class="section-label">03_games</div>
+      <h2 class="section-title">Gaming Stats</h2>
+      <div class="games-grid">
+        <div class="game-card" data-tilt>
+          <div class="game-header">
+            <div class="game-icon"><i class="fa-solid fa-crosshairs"></i></div>
+            <h3 class="game-name">CS2</h3>
+          </div>
+          <div class="game-stat">
+            <span class="game-stat-value" data-target="10000">0</span>
+            <span class="game-stat-label">hours</span>
+          </div>
+          <div class="game-bar">
+            <div class="game-bar-fill" style="width:100%"></div>
+          </div>
+        </div>
+        <div class="game-card" data-tilt>
+          <div class="game-header">
+            <div class="game-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3 class="game-name">Dota 2</h3>
+          </div>
+          <div class="game-stat">
+            <span class="game-stat-value" data-target="8000">0</span>
+            <span class="game-stat-label">hours</span>
+          </div>
+          <div class="game-bar">
+            <div class="game-bar-fill" style="width:80%"></div>
+          </div>
+          <div class="game-rank">Rank: Titan</div>
+          <div class="game-heroes">
+            <span>Arc Warden</span>
+            <span>Naga Siren</span>
+            <span>Phantom Lancer</span>
+          </div>
+          <div class="game-quote">"I love to farm"</div>
+        </div>
+        <div class="game-card" data-tilt>
+          <div class="game-header">
+            <div class="game-icon"><i class="fa-solid fa-bolt"></i></div>
+            <h3 class="game-name">Valorant</h3>
+          </div>
+          <div class="game-stat">
+            <span class="game-stat-value" data-target="3000">0</span>
+            <span class="game-stat-label">hours</span>
+          </div>
+          <div class="game-bar">
+            <div class="game-bar-fill" style="width:30%"></div>
+          </div>
+        </div>
+        <div class="game-card" data-tilt>
+          <div class="game-header">
+            <div class="game-icon"><i class="fa-solid fa-circle"></i></div>
+            <h3 class="game-name">osu!</h3>
+          </div>
+          <div class="game-stat">
+            <span class="game-stat-value" data-target="1500">0</span>
+            <span class="game-stat-label">hours</span>
+          </div>
+          <div class="game-bar">
+            <div class="game-bar-fill" style="width:15%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vices Section -->
+    <section class="section vices-section" data-section="vices" id="section-vices">
+      <div class="section-label">04_vices</div>
+      <h2 class="section-title">Guilty Pleasures</h2>
+      <div class="vices-content">
+        <div class="vice-item">
+          <div class="vice-symbol"><i class="fa-solid fa-smoking"></i></div>
+          <div class="vice-text">
+            <span class="vice-name">Cigarettes</span>
+            <span class="vice-desc">&mdash; inspiration in a stick</span>
+          </div>
+          <div class="vice-line"></div>
+        </div>
+        <div class="vice-item">
+          <div class="vice-symbol"><i class="fa-solid fa-wine-glass"></i></div>
+          <div class="vice-text">
+            <span class="vice-name">Whiskey</span>
+            <span class="vice-desc">&mdash; debugger of the soul</span>
+          </div>
+          <div class="vice-line"></div>
+        </div>
+        <div class="vices-note">_everything_in_moderation_</div>
+      </div>
+    </section>
+
+    <!-- Interests Section -->
+    <section class="section interests-section" data-section="interests" id="section-interests">
+      <div class="section-label">05_interests</div>
+      <h2 class="section-title">What I'm Into</h2>
+      <div class="interests-grid">
+        <div class="interest-card" data-tilt>
+          <div class="interest-icon-wrapper">
+            <div class="interest-icon-bg"></div>
+            <i class="fa-solid fa-music interest-icon-main"></i>
+          </div>
+          <h3 class="interest-name">Music</h3>
+          <p class="interest-desc">
+            Love listening to all kinds of music — from phonk to lofi, from metal to classical. Music is fuel for coding and gaming sessions.
+          </p>
+          <div class="interest-tags">
+            <span>Phonk</span><span>Lofi</span><span>Metal</span><span>Classical</span>
+          </div>
+        </div>
+        <div class="interest-card" data-tilt>
+          <div class="interest-icon-wrapper">
+            <div class="interest-icon-bg"></div>
+            <i class="fa-solid fa-tv interest-icon-main"></i>
+          </div>
+          <h3 class="interest-name">Anime</h3>
+          <p class="interest-desc">
+            Big fan of anime — from classic shonen to psychological thrillers. Always looking for new series to binge-watch after long coding hours.
+          </p>
+          <div class="interest-tags">
+            <span>Shonen</span><span>Seinen</span><span>Thriller</span><span>Slice of Life</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Setup / Gear Section -->
+    <section class="section setup-section" data-section="setup" id="section-setup">
+      <div class="section-label">06_setup</div>
+      <h2 class="section-title">My Gear</h2>
+      <div class="setup-grid">
+        <div class="setup-card" data-tilt>
+          <div class="setup-icon"><i class="fa-solid fa-microchip"></i></div>
+          <div class="setup-info">
+            <span class="setup-name">Intel Xeon E5-2690 v4</span>
+            <span class="setup-spec">14 Cores / 28 Threads @ 2.6 GHz</span>
+          </div>
+          <div class="setup-bar">
+            <div class="setup-bar-fill" style="width:85%"></div>
+          </div>
+        </div>
+        <div class="setup-card" data-tilt>
+          <div class="setup-icon"><i class="fa-solid fa-gamepad"></i></div>
+          <div class="setup-info">
+            <span class="setup-name">GeForce GTX 1660 Super</span>
+            <span class="setup-spec">6 GB GDDR6</span>
+          </div>
+          <div class="setup-bar">
+            <div class="setup-bar-fill" style="width:75%"></div>
+          </div>
+        </div>
+        <div class="setup-card" data-tilt>
+          <div class="setup-icon"><i class="fa-solid fa-memory"></i></div>
+          <div class="setup-info">
+            <span class="setup-name">32 GB DDR4 RAM</span>
+            <span class="setup-spec">Quad-channel</span>
+          </div>
+          <div class="setup-bar">
+            <div class="setup-bar-fill" style="width:95%"></div>
+          </div>
+        </div>
+        <div class="setup-card" data-tilt>
+          <div class="setup-icon"><i class="fa-solid fa-hard-drive"></i></div>
+          <div class="setup-info">
+            <span class="setup-name">ADATA Falcon 512 GB SSD</span>
+            <span class="setup-spec">NVMe M.2</span>
+          </div>
+          <div class="setup-bar">
+            <div class="setup-bar-fill" style="width:88%"></div>
+          </div>
+        </div>
+        <div class="setup-card" data-tilt>
+          <div class="setup-icon"><i class="fa-regular fa-hard-drive"></i></div>
+          <div class="setup-info">
+            <span class="setup-name">HDD 512 GB</span>
+            <span class="setup-spec">Storage drive</span>
+          </div>
+          <div class="setup-bar">
+            <div class="setup-bar-fill" style="width:60%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" data-section="contact" id="section-contact">
+      <div class="section-label">07_contact</div>
+      <h2 class="section-title">Connect</h2>
+      <div class="contact-grid">
+        <a href="https://github.com" target="_blank" rel="noopener" class="contact-link">
+          <i class="fa-brands fa-github"></i>
+          <span>GitHub</span>
+          <div class="contact-link-line"></div>
+        </a>
+        <a href="https://discord.com" target="_blank" rel="noopener" class="contact-link">
+          <i class="fa-brands fa-discord"></i>
+          <span>Discord</span>
+          <div class="contact-link-line"></div>
+        </a>
+        <a href="https://steamcommunity.com" target="_blank" rel="noopener" class="contact-link">
+          <i class="fa-brands fa-steam"></i>
+          <span>Steam</span>
+          <div class="contact-link-line"></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-line"></div>
+      <div class="footer-content">
+        <span class="footer-copy">&copy; 2026 ecstasy</span>
+        <span class="footer-divider">&#10026;</span>
+        <span class="footer-tagline">_built_with_precision_</span>
+        <span class="footer-divider">&#10026;</span>
+        <span class="footer-latin">ex nihilo nihil fit</span>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Floating Action Button (Section Compass) -->
+  <div class="fab-compass" id="fabCompass">
+    <div class="fab-ring">
+      <span class="fab-dot dot-hero" data-target="hero"></span>
+      <span class="fab-dot dot-about" data-target="about"></span>
+      <span class="fab-dot dot-tech" data-target="tech"></span>
+      <span class="fab-dot dot-games" data-target="games"></span>
+      <span class="fab-dot dot-vices" data-target="vices"></span>
+      <span class="fab-dot dot-contact" data-target="contact"></span>
+    </div>
+    <div class="fab-center">
+      <i class="fa-solid fa-compass"></i>
+    </div>
+  </div>
+
+  <!-- 3D Navigation Toggle Button -->
+  <div class="nav-overlay" id="navOverlay">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle 3D Navigation">
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+      <span class="nav-toggle-line"></span>
+    </button>
+    <div class="nav-hint">drag to explore</div>
+  </div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+      }
+    }
+  </script>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
